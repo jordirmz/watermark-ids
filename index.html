@@ -1802,6 +1802,8 @@ New features: Run only in one file (index.html), blur feature is now a brush.
              */
             const drawWavyText = (text, x, y, amplitude, frequency) => {
                 const characters = text.split('');
+                const prevAlign = ctx.textAlign;
+                ctx.textAlign = 'left';  // Alineación izquierda para cálculo preciso de posición
                 let currentX = x - (textWidth / 2);
                 const baselineY = y;
 
@@ -1821,6 +1823,7 @@ New features: Run only in one file (index.html), blur feature is now a brush.
 
                     currentX += charWidth * 1.1;
                 }
+                ctx.textAlign = prevAlign;
 
             };
 
