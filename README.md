@@ -11,6 +11,8 @@ Funciones principales
 *   Recorta cualquier parte de la imagen.
     
 *   Añade una marca de agua personalizada.
+
+*   Funciones para ocultar automáticamente datos del DNI español (Beta).
     
 *   Procesamiento 100% local, sin conexión a internet.
     

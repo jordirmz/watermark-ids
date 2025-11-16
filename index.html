@@ -797,14 +797,17 @@ New features: Run only in one file (index.html), blur feature is now a brush.
             color: #7e22ce
         }
 
-        #enableBlurBtn {
+        #enableBlurBtn,
+        #applyDniProtectionBtn {
             background: #f0fdf4;
             color: #15803d;
             border-color: #dcfce7
         }
 
         #enableBlurBtn:hover,
-        #enableBlurBtn.active {
+        #applyDniProtectionBtn:hover,
+        #enableBlurBtn.active,
+        #applyDniProtectionBtn.active {
             background: #dcfce7;
             border-color: #86efac;
             color: #15803d
@@ -867,7 +870,7 @@ New features: Run only in one file (index.html), blur feature is now a brush.
             display: flex;
             flex-direction: column;
             gap: .5rem;
-            margin-bottom: 1.5rem;
+            margin-top: 1.5rem;
             background: #f8fafc;
             padding: 1rem;
             border-radius: .75rem;
@@ -912,6 +915,193 @@ New features: Run only in one file (index.html), blur feature is now a brush.
             padding: 1rem;
             margin-top: 1rem;
             text-align: center
+        }
+
+        /* DNI tools */
+
+        #dniInstructions {
+            background: #fcefdc42;
+            color: #805215;
+            padding: 1rem;
+            margin-top: 1rem;
+            text-align: center
+        }
+
+        .dni-tools-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: .5rem;
+            margin-top: 1.5rem;
+            margin-bottom: .5rem
+        }
+
+        .dni-tools-title {
+            font-size: .75rem;
+            text-transform: uppercase;
+            letter-spacing: .05em;
+            color: #6b7280;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: .35rem
+        }
+
+        .dni-tools-title-badge {
+            font-size: .65rem;
+            padding: .15rem .45rem;
+            border-radius: 999px;
+            background: #eff6ff;
+            color: #1d4ed8;
+            font-weight: 600
+        }
+
+        #toggleDniToolsBtn {
+            padding: .4rem .8rem;
+            border-radius: 999px;
+            font-size: .75rem;
+            min-width: auto;
+            box-shadow: none;
+            border: 1px solid #dbeafe;
+            background: #eff6ff;
+            color: #1d4ed8;
+            display: inline-flex;
+            align-items: center;
+            gap: .3rem
+        }
+
+        #toggleDniToolsBtn svg {
+            width: 0.9rem;
+            height: 0.9rem
+        }
+
+        #toggleDniToolsBtn:hover {
+            background: #dbeafe
+        }
+
+        .dni-preset-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: .35rem;
+            margin-bottom: .75rem;
+            margin-top: .75rem
+        }
+
+        .dni-preset-button {
+            border-radius: 999px;
+            padding: .25rem .6rem;
+            font-size: .7rem;
+            border: 1px solid #e5e7eb;
+            background: #f9fafb;
+            color: #4b5563;
+            cursor: pointer;
+            transition: all .15s ease-in-out
+        }
+
+        .dni-preset-button:hover {
+            background: #eff6ff;
+            border-color: #bfdbfe;
+            color: #1d4ed8
+        }
+
+        .dni-preset-button.active {
+            background: #1d4ed8;
+            border-color: #1d4ed8;
+            color: #fff
+        }
+
+        .dni-fields-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: .35rem .75rem;
+        }
+
+        .dni-fields-grid label {
+            font-size: .78rem
+        }
+
+        .dni-section-divider {
+            border-top: 1px dashed #e5e7eb;
+            margin-top: .75rem;
+            margin-bottom: .75rem
+        }
+
+        /* --- Base container --- */
+        .dni-option {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 6px 0;
+            cursor: pointer;
+            font-size: 14px;
+            color: #333;
+            user-select: none;
+        }
+
+        /* Hide default checkbox/radio styles */
+        .dni-option input[type="checkbox"],
+        .dni-option input[type="radio"] {
+            appearance: none;
+            -webkit-appearance: none;
+            margin: 0;
+            margin-left: 15px;
+            width: 20px;
+            height: 20px;
+            border: 2px solid #8a8a8a;
+            border-radius: 4px;
+            display: grid;
+            place-content: center;
+            background-color: white;
+            transition: all 0.2s ease;
+        }
+
+        /* Radio uses circle */
+        .dni-option input[type="radio"] {
+            border-radius: 50%;
+        }
+
+        /* Hover */
+        .dni-option:hover input {
+            border-color: #4a9cff;
+        }
+
+        /* --- CHECKED states --- */
+        .dni-option input[type="checkbox"]:checked {
+            background-color: #4a9cff;
+            border-color: #4a9cff;
+        }
+
+        .dni-option input[type="radio"]:checked {
+            background-color: #4a9cff;
+            border-color: #4a9cff;
+        }
+
+        /* Checkmark inside checkbox */
+        .dni-option input[type="checkbox"]:checked::before {
+            content: "✔";
+            color: white;
+            font-size: 14px;
+            line-height: 1;
+        }
+
+        /* Dot inside radio button */
+        .dni-option input[type="radio"]:checked::before {
+            content: "";
+            width: 10px;
+            height: 10px;
+            background: white;
+            border-radius: 50%;
+        }
+
+        /* Disabled state */
+        .dni-option input:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .dni-option:has(input:disabled) {
+            opacity: 0.6;
+            cursor: not-allowed;
         }
 
         @media (max-width: 640px) {
@@ -1050,13 +1240,6 @@ New features: Run only in one file (index.html), blur feature is now a brush.
             </div>
             <div id="blurControls" class="controls-panel hidden">
 
-                <div class="slider-control">
-                    <label for="cursorSize" class="text-sm font-medium text-gray-700">
-                        Tamaño del cursor: <span id="cursorSizeValue">10</span>px
-                    </label>
-                    <input type="range" id="cursorSize" min="5" max="50" value="10">
-                </div>
-
                 <button id="undoBlurBtn" class="tool-button w-full" disabled>
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -1064,8 +1247,170 @@ New features: Run only in one file (index.html), blur feature is now a brush.
                     </svg>
                     <span>Deshacer última ofuscación</span>
                 </button>
-            </div>
 
+                <div class="slider-control">
+                    <label for="cursorSize" class="text-sm font-medium text-gray-700">
+                        Tamaño del cursor: <span id="cursorSizeValue">10</span>px
+                    </label>
+                    <input type="range" id="cursorSize" min="5" max="50" value="10">
+                </div>
+
+                <!-- Cabecera Herramientas DNI -->
+                <div id="toggleDniTools" class="dni-tools-header">
+                    <div class="dni-tools-title">
+                        Herramientas de DNI
+                        <span class="dni-tools-title-badge">Beta</span>
+                    </div>
+                    <button id="toggleDniToolsBtn" type="button">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8h16M4 16h10" />
+                        </svg>
+                        <span>Mostrar</span>
+                    </button>
+                </div>
+
+                <!-- Contenedor Herramientas DNI (oculto por defecto) -->
+                <div id="dniToolsContainer" class="hidden">
+                    <div class="dni-section-divider"></div>
+
+                    <!-- Lado del documento -->
+                    <div class="mb-2 mt-1">
+                        <p class="text-xs font-semibold text-gray-600 mb-1">Lado del documento</p>
+                        <div class="flex items-center gap-4 text-sm text-gray-700 mb-2">
+                            <label class="flex items-center gap-2 dni-option">
+                                <input type="radio" name="dniSide" id="dniSideFront" value="front" checked>
+                                <span>Anverso</span>
+                            </label>
+                            <label class="flex items-center gap-2 dni-option">
+                                <input type="radio" name="dniSide" id="dniSideBack" value="back">
+                                <span>Reverso</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Filtros rápidos -->
+                    <div class="mb-2 mt-1">
+                        <p class="text-xs font-semibold text-gray-600 mb-1">Filtros rápidos</p>
+                        <div class="flex items-center gap-4 text-sm text-gray-700 mb-2">
+                            <div class="dni-preset-container">
+                                <button type="button" class="dni-preset-button" data-preset="all">
+                                    Todos
+                                </button>
+                                <button type="button" class="dni-preset-button" data-preset="none">
+                                    Ninguno
+                                </button>
+                                <button type="button" class="dni-preset-button" data-preset="hotel">
+                                    Hotel
+                                </button>
+                                <button type="button" class="dni-preset-button" data-preset="invoice">
+                                    Factura
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Opciones anverso -->
+                    <div id="dniFrontOptions" class="mt-3">
+                        <p class="text-xs font-semibold text-gray-600 mb-2">Ocultar campos del anverso</p>
+                        <div class="dni-fields-grid text-sm text-gray-700 mb-6">
+                            <label class="flex items-center gap-2 dni-option">
+                                <input type="checkbox" id="dniHideNumber" checked>
+                                <span>Número de DNI</span>
+                            </label>
+                            <label class="flex items-center gap-2 dni-option">
+                                <input type="checkbox" id="dniHidePhoto">
+                                <span>Fotografía</span>
+                            </label>
+                            <label class="flex items-center gap-2 dni-option">
+                                <input type="checkbox" id="dniHideLastName" checked>
+                                <span>Apellidos</span>
+                            </label>
+                            <label class="flex items-center gap-2 dni-option">
+                                <input type="checkbox" id="dniHideFirstName" checked>
+                                <span>Nombre</span>
+                            </label>
+                            <label class="flex items-center gap-2 dni-option">
+                                <input type="checkbox" id="dniHideSex">
+                                <span>Sexo</span>
+                            </label>
+                            <label class="flex items-center gap-2 dni-option">
+                                <input type="checkbox" id="dniHideNationality">
+                                <span>Nacionalidad</span>
+                            </label>
+                            <label class="flex items-center gap-2 dni-option">
+                                <input type="checkbox" id="dniHideBirth">
+                                <span>Nacimiento</span>
+                            </label>
+                            <label class="flex items-center gap-2 dni-option">
+                                <input type="checkbox" id="dniHideIssue">
+                                <span>Emisión</span>
+                            </label>
+                            <label class="flex items-center gap-2 dni-option">
+                                <input type="checkbox" id="dniHideExpiry">
+                                <span>Validez</span>
+                            </label>
+                            <label class="flex items-center gap-2 dni-option">
+                                <input type="checkbox" id="dniHideSupport">
+                                <span>Soporte</span>
+                            </label>
+                            <label class="flex items-center gap-2 dni-option">
+                                <input type="checkbox" id="dniHideSignature">
+                                <span>Firma</span>
+                            </label>
+                            <label class="flex items-center gap-2 dni-option">
+                                <input type="checkbox" id="dniHideCAN">
+                                <span>CAN</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Opciones reverso -->
+                    <div id="dniBackOptions" class="mt-3 hidden">
+                        <p class="text-xs font-semibold text-gray-600 mb-2">Ocultar campos del reverso</p>
+                        <div class="dni-fields-grid text-sm text-gray-700 mb-6">
+                            <label class="flex items-center gap-2 dni-option">
+                                <input type="checkbox" id="dniHideTeam">
+                                <span>Equipo</span>
+                            </label>
+                            <label class="flex items-center gap-2 dni-option">
+                                <input type="checkbox" id="dniHideAddressBack" checked>
+                                <span>Domicilio</span>
+                            </label>
+                            <label class="flex items-center gap-2 dni-option">
+                                <input type="checkbox" id="dniHideBirthPlace">
+                                <span>Lugar de nacimiento</span>
+                            </label>
+                            <label class="flex items-center gap-2 dni-option">
+                                <input type="checkbox" id="dniHideParents">
+                                <span>Padres</span>
+                            </label>
+                            <label class="flex items-center gap-2 dni-option">
+                                <input type="checkbox" id="dniHideMRZ">
+                                <span>MRZ</span>
+                            </label>
+                            <label class="flex items-center gap-2 dni-option">
+                                <input type="checkbox" id="dniHideSupport2">
+                                <span>Soporte</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="mt-3 text-left mb-6">
+                        <label class="flex items-center gap-2 text-xs text-gray-700 dni-option">
+                            <input type="checkbox" id="dniApplyBw" checked>
+                            <span>Convertir DNI a blanco y negro (recomendado)</span>
+                        </label>
+                    </div>
+
+                    <button id="applyDniProtectionBtn" class="tool-button w-full mt-4">
+                        Aplicar protección de DNI
+                    </button>
+                    <p class="mt-2 text-sm text-gray-600 bg-blue-50 p-3 rounded-lg">
+                        <strong>Consejo:</strong> Para mejores resultados, intenta que el DNI esté lo más recto posible.
+                        Recuerda que también puedes pintar sobre la imagen si algún detalle queda visible.
+                    </p>
+                </div>
+            </div>
         </div>
 
         <!-- Step 3: Final Result -->
@@ -1089,10 +1434,6 @@ New features: Run only in one file (index.html), blur feature is now a brush.
     <script>
         /**
          * SAFE ID - Herramienta de Protección de DNI
-         * 
-         * Esta herramienta procesa las imágenes completamente en el navegador del usuario.
-         * No se realiza ninguna carga de imágenes a servidores externos.
-         * Todo el procesamiento de imágenes y datos se realiza localmente.
          */
 
         // Referencias a elementos del DOM para la interfaz de usuario
@@ -1107,35 +1448,22 @@ New features: Run only in one file (index.html), blur feature is now a brush.
 
         /**
          * Configuración de los canvases para el procesamiento de imágenes
-         * Se utilizan dos canvases:
-         * - originalCanvas: mantiene la imagen original con las áreas ofuscadas
-         * - canvas: muestra el resultado final con la marca de agua
-         * 
-         * willReadFrequently: true -> Optimiza el rendimiento para operaciones frecuentes de lectura de píxeles
          */
         const originalCanvas = document.getElementById('originalCanvas');
         const originalCtx = originalCanvas.getContext('2d', { willReadFrequently: true });
         const canvas = document.getElementById('canvas');
         const ctx = canvas.getContext('2d', { willReadFrequently: true });
 
-        // Variables de estado para el control de la aplicación
-        let img = new Image();           // Almacena la imagen cargada
-        let painting = false;            // Controla el estado de pintado/ofuscación
-        let blurEnabled = false;         // Controla si el modo ofuscación está activo
+        let img = new Image();
+        let painting = false;
+        let blurEnabled = false;
 
-        /**
-         * Configuración de calidad para el procesamiento de imágenes
-         * Asegura que las imágenes mantengan la mejor calidad posible durante el procesamiento
-         */
         originalCtx.imageSmoothingEnabled = true;
         originalCtx.imageSmoothingQuality = 'high';
         ctx.imageSmoothingEnabled = true;
         ctx.imageSmoothingQuality = 'high';
 
-        /**
-         * Sistema de contador de caracteres para la marca de agua
-         * Limita y muestra la cantidad de caracteres ingresados (máximo 60)
-         */
+        // Marca de agua
         const watermarkInput = document.getElementById('watermarkText');
         const charCount = document.getElementById('charCount');
 
@@ -1143,28 +1471,21 @@ New features: Run only in one file (index.html), blur feature is now a brush.
             charCount.textContent = this.value.length;
         });
 
-        /**
-         * Manejador de carga de imágenes
-         * - Valida el tipo de archivo (solo JPG y PNG)
-         * - Procesa la imagen localmente sin enviarla a ningún servidor
-         * - Muestra una vista previa en la interfaz
-         */
+        // Carga de imagen
         document.getElementById('imageInput').addEventListener('change', function (e) {
             if (e.target.files[0]) {
                 const file = e.target.files[0];
                 const fileLabel = this.parentElement.querySelector('p');
 
-                // Validación de seguridad: solo permite formatos de imagen seguros
                 const validTypes = ['image/jpeg', 'image/jpg', 'image/png'];
                 if (!validTypes.includes(file.type)) {
                     alert('Por favor sube un archivo en formato JPG o PNG.');
-                    this.value = ''; // Limpia el input por seguridad
+                    this.value = '';
                     return;
                 }
 
                 fileLabel.textContent = file.name;
 
-                // Procesamiento local de la imagen para vista previa
                 const reader = new FileReader();
                 reader.onload = function (e) {
                     const previewImg = document.createElement('img');
@@ -1182,10 +1503,6 @@ New features: Run only in one file (index.html), blur feature is now a brush.
             }
         });
 
-        /**
-         * Sistema de transición entre pasos
-         * Maneja la visibilidad y animaciones entre las diferentes etapas del proceso
-         */
         function showStep(stepToShow) {
             const steps = [step1, step2, step3];
 
@@ -1201,24 +1518,16 @@ New features: Run only in one file (index.html), blur feature is now a brush.
             }
         }
 
-        /**
-         * Cargador de imágenes seguro
-         * - Procesa la imagen manteniendo las dimensiones originales
-         * - No reduce la calidad de la imagen
-         * - Mantiene el procesamiento en el dispositivo del usuario
-         */
         function loadImage(file) {
             const reader = new FileReader();
             reader.onload = function (e) {
                 img = new Image();
                 img.onload = function () {
-                    // Mantiene las dimensiones originales para no perder calidad
                     originalCanvas.width = canvas.width = img.width;
                     originalCanvas.height = canvas.height = img.height;
                     originalCtx.drawImage(img, 0, 0, img.width, img.height);
                     ctx.drawImage(img, 0, 0, img.width, img.height);
 
-                    // Ajusta el tamaño visual manteniendo la proporción
                     originalCanvas.style.width = canvas.style.width = '100%';
                     originalCanvas.style.height = canvas.style.height = 'auto';
                     originalCanvas.style.maxWidth = canvas.style.maxWidth = '100%';
@@ -1234,10 +1543,6 @@ New features: Run only in one file (index.html), blur feature is now a brush.
             reader.readAsDataURL(file);
         }
 
-        /**
-         * Validación y procesamiento del paso inicial
-         * Verifica que se hayan proporcionado todos los datos necesarios
-         */
         nextToPreviewBtn.addEventListener('click', () => {
             const imageInput = document.getElementById('imageInput');
             const watermarkText = watermarkInput.value;
@@ -1260,15 +1565,13 @@ New features: Run only in one file (index.html), blur feature is now a brush.
         });
 
         /**
-         * Sistema de recorte de imagen
-         * Permite al usuario seleccionar y recortar una porción específica de la imagen
+         * Recorte
          */
         let cropEnabled = false;
         let cropBox = null;
         let originalImageData = null;
         let corners = [];
 
-        // Elementos del DOM para el recorte
         const enableCropBtn = document.getElementById('enableCropBtn');
         const cropControls = document.getElementById('cropControls');
         const applyCropBtn = document.getElementById('applyCropBtn');
@@ -1290,8 +1593,6 @@ New features: Run only in one file (index.html), blur feature is now a brush.
             svg.style.top = '0';
             svg.style.left = '0';
             svg.style.pointerEvents = 'none';
-
-            // Set the SVG viewport
             svg.setAttribute('viewBox', '0 0 100 100');
             svg.setAttribute('preserveAspectRatio', 'none');
 
@@ -1307,25 +1608,22 @@ New features: Run only in one file (index.html), blur feature is now a brush.
             canvasContainer.style.position = 'relative';
             canvasContainer.appendChild(cropBox);
 
-            // Calculate initial corner positions with padding relative to canvas size
             const rect = originalCanvas.getBoundingClientRect();
-            const padding = Math.min(rect.width, rect.height) * 0.1; // 10% padding
+            const padding = Math.min(rect.width, rect.height) * 0.1;
 
-            // Store corners in relative coordinates (0-1) for better scaling
             corners = [
-                { x: padding / rect.width, y: padding / rect.height }, // Top-left
-                { x: (rect.width - padding) / rect.width, y: padding / rect.height }, // Top-right
-                { x: (rect.width - padding) / rect.width, y: (rect.height - padding) / rect.height }, // Bottom-right
-                { x: padding / rect.width, y: (rect.height - padding) / rect.height } // Bottom-left
+                { x: padding / rect.width, y: padding / rect.height },
+                { x: (rect.width - padding) / rect.width, y: padding / rect.height },
+                { x: (rect.width - padding) / rect.width, y: (rect.height - padding) / rect.height },
+                { x: padding / rect.width, y: (rect.height - padding) / rect.height }
             ];
 
-            // Create corner handles
             for (const [index, corner] of corners.entries()) {
                 const handle = document.createElement('div');
                 handle.className = 'corner-handle';
                 handle.style.position = 'absolute';
-                handle.style.width = '20px'; // Increased size for better touch
-                handle.style.height = '20px'; // Increased size for better touch
+                handle.style.width = '20px';
+                handle.style.height = '20px';
                 handle.style.backgroundColor = '#06b6d4';
                 handle.style.border = '2px solid white';
                 handle.style.borderRadius = '50%';
@@ -1333,20 +1631,16 @@ New features: Run only in one file (index.html), blur feature is now a brush.
                 handle.style.zIndex = '10';
                 handle.style.transform = 'translate(-50%, -50%)';
                 handle.style.pointerEvents = 'auto';
-                handle.style.touchAction = 'none'; // Prevent scrolling while dragging
+                handle.style.touchAction = 'none';
 
-                // Position the handle using relative coordinates
                 handle.style.left = `${corner.x * 100}%`;
                 handle.style.top = `${corner.y * 100}%`;
 
-                // Mouse Events
                 handle.addEventListener('mousedown', handleDragStart);
-
-                // Touch Events
                 handle.addEventListener('touchstart', handleDragStart, { passive: false });
 
                 function handleDragStart(e) {
-                    e.preventDefault(); // Prevent scrolling on mobile
+                    e.preventDefault();
                     e.stopPropagation();
                     const rect = originalCanvas.getBoundingClientRect();
 
@@ -1388,7 +1682,6 @@ New features: Run only in one file (index.html), blur feature is now a brush.
 
             const polygon = cropBox.querySelector('polygon');
             if (polygon) {
-                // Convert relative coordinates to SVG viewport coordinates (0-100)
                 const pointsStr = corners.map(corner => {
                     const x = corner.x * 100;
                     const y = corner.y * 100;
@@ -1408,7 +1701,7 @@ New features: Run only in one file (index.html), blur feature is now a brush.
                 cropBox = null;
             }
 
-            enableBlurBtn.style.display = 'inherit'; // Show blur button again after crop mode
+            enableBlurBtn.style.display = 'inherit';
         }
 
         function enableCropMode() {
@@ -1418,53 +1711,44 @@ New features: Run only in one file (index.html), blur feature is now a brush.
             originalImageData = originalCtx.getImageData(0, 0, originalCanvas.width, originalCanvas.height);
             createCropBox();
 
-            // Disable blur mode if it's active
             if (blurEnabled) {
                 blurEnabled = false;
                 blurInstructions.style.display = 'none';
                 blurControls.classList.add('hidden');
             }
-            enableBlurBtn.style.display = 'none'; // Hide blur button during crop mode
+            enableBlurBtn.style.display = 'none';
         }
 
         function applyCrop() {
             if (!cropBox) return;
 
-            // Calculate the bounds of the cropped area
             const points = corners.map(corner => ({
                 x: corner.x * originalCanvas.width,
                 y: corner.y * originalCanvas.height
             }));
 
-            // Find the bounding box of the cropped area
             const minX = Math.min(...points.map(p => p.x));
             const maxX = Math.max(...points.map(p => p.x));
             const minY = Math.min(...points.map(p => p.y));
             const maxY = Math.max(...points.map(p => p.y));
 
-            // Calculate new dimensions
             const newWidth = maxX - minX;
             const newHeight = maxY - minY;
 
-            // Create a temporary canvas for the original image
             const tempCanvas = document.createElement('canvas');
             tempCanvas.width = originalCanvas.width;
             tempCanvas.height = originalCanvas.height;
             const tempCtx = tempCanvas.getContext('2d');
 
-            // Draw the original image
             tempCtx.drawImage(originalCanvas, 0, 0);
 
-            // Resize the original canvas to the new dimensions
             originalCanvas.width = newWidth;
             originalCanvas.height = newHeight;
 
-            // Clear and set up the clipping path
             originalCtx.clearRect(0, 0, newWidth, newHeight);
             originalCtx.save();
             originalCtx.beginPath();
 
-            // Adjust points relative to the new origin (minX, minY)
             let index = 0;
             for (const point of points) {
                 const x = point.x - minX;
@@ -1482,11 +1766,9 @@ New features: Run only in one file (index.html), blur feature is now a brush.
             originalCtx.closePath();
             originalCtx.clip();
 
-            // Draw the cropped portion of the original image
             originalCtx.drawImage(tempCanvas, -minX, -minY);
             originalCtx.restore();
 
-            // Update canvas style to maintain aspect ratio
             originalCanvas.style.width = '100%';
             originalCanvas.style.height = 'auto';
             originalCanvas.style.maxWidth = '100%';
@@ -1494,7 +1776,6 @@ New features: Run only in one file (index.html), blur feature is now a brush.
             disableCropMode();
         }
 
-        // Event listeners para el recorte
         enableCropBtn.addEventListener('click', () => {
             if (cropEnabled) {
                 if (originalImageData) {
@@ -1514,34 +1795,29 @@ New features: Run only in one file (index.html), blur feature is now a brush.
             disableCropMode();
         });
 
-        // Update the crop controls text
         const cropInstructions = document.querySelector('#cropControls p');
         cropInstructions.textContent = 'Arrastra las esquinas azules para ajustar el área de recorte.';
 
         /**
-         * Sistema de control de ofuscación
-         * Controla el tamaño del pincel de censura y la gestión de historial para deshacer
+         * Ofuscación (pincel) + historial
          */
         const cursorSize = document.getElementById('cursorSize');
         const cursorSizeValue = document.getElementById('cursorSizeValue');
         const blurControls = document.getElementById('blurControls');
 
-        // Add state history tracking for undo
         let canvasStateHistory = [];
         let currentStateIndex = -1;
         const MAX_HISTORY_STATES = 20;
         let strokeInProgress = false;
 
         function saveCanvasState() {
-            // Only save state if we're not in the middle of a stroke
+            if (!originalCanvas.width || !originalCanvas.height) return;
+
             if (!strokeInProgress) {
-                // Remove any states after current index if we branched
                 canvasStateHistory = canvasStateHistory.slice(0, currentStateIndex + 1);
 
-                // Save current canvas state
                 const imageData = originalCtx.getImageData(0, 0, originalCanvas.width, originalCanvas.height);
 
-                // If we reached max history, remove oldest state
                 if (canvasStateHistory.length >= MAX_HISTORY_STATES) {
                     canvasStateHistory.shift();
                     currentStateIndex--;
@@ -1550,7 +1826,6 @@ New features: Run only in one file (index.html), blur feature is now a brush.
                 canvasStateHistory.push(imageData);
                 currentStateIndex++;
 
-                // Enable/disable undo button based on history
                 document.getElementById('undoBlurBtn').disabled = currentStateIndex <= 0;
             }
         }
@@ -1561,7 +1836,6 @@ New features: Run only in one file (index.html), blur feature is now a brush.
                 const previousState = canvasStateHistory[currentStateIndex];
                 originalCtx.putImageData(previousState, 0, 0);
 
-                // Update undo button state
                 document.getElementById('undoBlurBtn').disabled = currentStateIndex <= 0;
             }
         }
@@ -1570,10 +1844,6 @@ New features: Run only in one file (index.html), blur feature is now a brush.
             cursorSizeValue.textContent = this.value;
         });
 
-        /**
-         * Control del modo ofuscación
-         * Activa/desactiva la capacidad de ofuscar áreas sensibles
-         */
         enableBlurBtn.addEventListener('click', () => {
             blurEnabled = !blurEnabled;
             blurInstructions.style.display = blurEnabled ? 'block' : 'none';
@@ -1581,10 +1851,9 @@ New features: Run only in one file (index.html), blur feature is now a brush.
             enableBlurBtn.classList.toggle('opacity-75');
 
             if (blurEnabled) {
-                // Initialize state history when enabling blur mode
                 canvasStateHistory = [];
                 currentStateIndex = -1;
-                saveCanvasState(); // Save initial state
+                saveCanvasState();
 
                 if ('ontouchstart' in globalThis) {
                     blurInstructions.innerHTML = 'Toca y arrastra para ocultar áreas sensibles, luego aplica la marca de agua<br /><span style="font-size: 0.8rem;">Ejemplo: Número de trámite, Códigos de barras/QR, Información innecesaria.</span>';
@@ -1592,38 +1861,8 @@ New features: Run only in one file (index.html), blur feature is now a brush.
             }
         });
 
-        // Add undo button event listener
         document.getElementById('undoBlurBtn').addEventListener('click', undoBlur);
 
-        // Navegación entre pasos
-        nextToWatermarkBtn.addEventListener('click', () => {
-            showStep(step3);
-            applyWatermark();
-        });
-
-        startOverBtn.addEventListener('click', () => {
-            location.reload();
-        });
-
-        /**
-         * Sistema de descarga segura
-         * Genera la imagen final en el dispositivo del usuario
-         * No se realiza ninguna carga a servidores externos
-         */
-        document.getElementById('downloadBtn').addEventListener('click', () => {
-            const link = document.createElement('a');
-            link.download = 'resultado.png';
-            link.href = canvas.toDataURL('image/png');
-            link.click();
-        });
-
-        /**
-         * Sistema de ofuscación interactivo
-         * Implementa eventos de mouse y touch para permitir al usuario
-         * ofuscar áreas específicas de la imagen de forma interactiva
-         */
-
-        // Eventos de mouse para ofuscación
         originalCanvas.addEventListener('mousedown', (event) => {
             if (blurEnabled) {
                 painting = true;
@@ -1638,16 +1877,16 @@ New features: Run only in one file (index.html), blur feature is now a brush.
                 saveCanvasState();
             }
         });
+
         originalCanvas.addEventListener('mousemove', (event) => {
             if (painting && blurEnabled) {
                 blurAtMouse(event);
             }
         });
 
-        // Eventos táctiles para ofuscación en dispositivos móviles
         originalCanvas.addEventListener('touchstart', (event) => {
             if (blurEnabled) {
-                event.preventDefault(); // Prevenir scroll mientras se ofusca
+                event.preventDefault();
                 painting = true;
                 blurAtTouch(event);
             }
@@ -1664,51 +1903,31 @@ New features: Run only in one file (index.html), blur feature is now a brush.
 
         originalCanvas.addEventListener('touchmove', (event) => {
             if (painting && blurEnabled) {
-                event.preventDefault(); // Prevenir scroll mientras se ofusca
+                event.preventDefault();
                 blurAtTouch(event);
             }
         });
 
-        /**
-         * Funciones de cálculo de posición para ofuscación
-         * Convierten las coordenadas de pantalla a coordenadas de canvas
-         * considerando el escalado y posición del elemento
-         */
         function blurAtMouse(event) {
-            // Obtener las dimensiones y posición actual del canvas
             const rect = originalCanvas.getBoundingClientRect();
-            // Calcular factores de escala para mantener precisión
             const scaleX = originalCanvas.width / rect.width;
             const scaleY = originalCanvas.height / rect.height;
-            // Convertir coordenadas del mouse a coordenadas del canvas
             const x = (event.clientX - rect.left) * scaleX;
             const y = (event.clientY - rect.top) * scaleY;
             applyRedactBrush(x, y);
         }
 
         function blurAtTouch(event) {
-            // Obtener las dimensiones y posición actual del canvas
             const rect = originalCanvas.getBoundingClientRect();
-            // Calcular factores de escala para mantener precisión
             const scaleX = originalCanvas.width / rect.width;
             const scaleY = originalCanvas.height / rect.height;
-            // Obtener el primer punto de contacto
             const touch = event.touches[0];
-            // Convertir coordenadas táctiles a coordenadas del canvas
             const x = (touch.clientX - rect.left) * scaleX;
             const y = (touch.clientY - rect.top) * scaleY;
             applyRedactBrush(x, y);
         }
 
-        /**
-         * Pincel de censura
-         * En vez de desenfocar, pinta un círculo sólido encima de la zona.
-         * De esta forma los píxeles originales quedan sobrescritos.
-         * @param {number} x - Coordenada X del centro del pincel
-         * @param {number} y - Coordenada Y del centro del pincel
-         */
         function applyRedactBrush(x, y) {
-            // Solo guardamos estado antes del primer trazo continuo
             if (!strokeInProgress) {
                 saveCanvasState();
                 strokeInProgress = true;
@@ -1718,42 +1937,421 @@ New features: Run only in one file (index.html), blur feature is now a brush.
 
             originalCtx.save();
             originalCtx.globalCompositeOperation = 'source-over';
-
-            // Color de censura: negro sólido (puedes cambiarlo o hacerlo configurable)
             originalCtx.fillStyle = '#000000';
-
-            // Pincel circular
             originalCtx.beginPath();
             originalCtx.arc(x, y, radius, 0, Math.PI * 2);
             originalCtx.fill();
-
             originalCtx.restore();
         }
 
         /**
-         * Sistema de marca de agua
-         * Aplica una marca de agua visible y persistente a la imagen
-         * El proceso es irreversible y se realiza en múltiples capas
-         * para prevenir la eliminación de la marca de agua
+         * Herramientas DNI
+         */
+
+        const dniSideFrontRadio = document.getElementById('dniSideFront');
+        const dniSideBackRadio = document.getElementById('dniSideBack');
+        const dniFrontOptions = document.getElementById('dniFrontOptions');
+        const dniBackOptions = document.getElementById('dniBackOptions');
+        const applyDniProtectionBtn = document.getElementById('applyDniProtectionBtn');
+        const toggleDniTools = document.getElementById('toggleDniTools');
+        const dniToolsContainer = document.getElementById('dniToolsContainer');
+        const dniPresetButtons = document.querySelectorAll('.dni-preset-button');
+
+        toggleDniTools.addEventListener('click', () => {
+            const isHidden = dniToolsContainer.classList.contains('hidden');
+            if (isHidden) {
+                dniToolsContainer.classList.remove('hidden');
+                toggleDniToolsBtn.classList.add('opacity-75');
+                toggleDniToolsBtn.querySelector('span').textContent = 'Ocultar';
+            } else {
+                dniToolsContainer.classList.add('hidden');
+                toggleDniToolsBtn.classList.remove('opacity-75');
+                toggleDniToolsBtn.querySelector('span').textContent = 'Mostrar';
+            }
+        });
+
+        dniSideFrontRadio.addEventListener('change', toggleDniSide);
+        dniSideBackRadio.addEventListener('change', toggleDniSide);
+
+        function toggleDniSide() {
+            if (dniSideFrontRadio.checked) {
+                dniFrontOptions.classList.remove('hidden');
+                dniBackOptions.classList.add('hidden');
+            } else {
+                dniFrontOptions.classList.add('hidden');
+                dniBackOptions.classList.remove('hidden');
+            }
+        }
+
+        const dniTemplateFront = {
+            number: { x: 0.4294, y: 0.1755, w: 0.3264, h: 0.0812 },
+            number_2: { x: 0.0262, y: 0.188, w: 0.1787, h: 0.0752 },
+            photo: { x: 0.038, y: 0.227, w: 0.3327, h: 0.7226 },
+            photo_2: { x: 0.8322, y: 0.6235, w: 0.0597, h: 0.1321 },
+            lastName: { x: 0.38, y: 0.2883, w: 0.5703, h: 0.1109 },
+            firstName: { x: 0.38, y: 0.4348, w: 0.5703, h: 0.0643 },
+            sex: { x: 0.38, y: 0.5219, w: 0.0638, h: 0.0643 },
+            nationality: { x: 0.5157, y: 0.5219, w: 0.1263, h: 0.0643 },
+            birth: { x: 0.7808, y: 0.5219, w: 0.1901, h: 0.0643 },
+            issue: { x: 0.38, y: 0.606, w: 0.1913, h: 0.0643 },
+            issue_2: { x: 0.7973, y: 0.6691, w: 0.1362, h: 0.0614 },
+            expiry: { x: 0.577, y: 0.606, w: 0.1914, h: 0.0643 },
+            support: { x: 0.38, y: 0.6981, w: 0.1801, h: 0.0643 },
+            support_2: { x: 0.7633, y: 0.1757, w: 0.1076, h: 0.0653 },
+            signature: { x: 0.38, y: 0.7596, w: 0.3589, h: 0.1464 },
+            can: { x: 0.7658, y: 0.8129, w: 0.1976, h: 0.0891 }
+        };
+
+        const dniTemplateBack = {
+            team: { x: 0.0286, y: 0.2617, w: 0.0497, h: 0.2929 },
+            support_3: { x: 0.1231, y: 0.1418, w: 0.1156, h: 0.0708 },
+            address: { x: 0.2772, y: 0.0829, w: 0.6714, h: 0.2182 },
+            birthPlace: { x: 0.2772, y: 0.3463, w: 0.6714, h: 0.1396 },
+            parents: { x: 0.2772, y: 0.5173, w: 0.6714, h: 0.0708 },
+            mrz: { x: 0.0286, y: 0.649, w: 0.92, h: 0.2595 }
+        };
+
+        function dniDebug() {
+            let clicks = [];
+
+            originalCanvas.addEventListener('click', onClick);
+            return "DNI debug activated. Click on the four corners of the area to get the template.";
+
+            function onClick(event) {
+                const rect = originalCanvas.getBoundingClientRect();
+                const scaleX = originalCanvas.width / rect.width;
+                const scaleY = originalCanvas.height / rect.height;
+
+                const realX = (event.clientX - rect.left) * scaleX;
+                const realY = (event.clientY - rect.top) * scaleY;
+
+                clicks.push({ x: realX, y: realY });
+
+                console.log(`Click ${clicks.length}/4 →`, realX.toFixed(1), realY.toFixed(1));
+
+                if (clicks.length === 4) {
+                    processPoints();
+                    clicks = []; // reset for next measurement
+                }
+            }
+
+            function processPoints() {
+                const box = detectDniBox();
+                if (!box) {
+                    console.warn("DNI box not detected.");
+                    return;
+                }
+
+                // Extract points
+                const tl = clicks[0];
+                const tr = clicks[1];
+                const bl = clicks[2];
+                const br = clicks[3];
+
+                // Compute bounding rectangle from the clicked points
+                const minX = Math.min(tl.x, bl.x);
+                const maxX = Math.max(tr.x, br.x);
+                const minY = Math.min(tl.y, tr.y);
+                const maxY = Math.max(bl.y, br.y);
+
+                const absX = minX;
+                const absY = minY;
+                const absW = maxX - minX;
+                const absH = maxY - minY;
+
+                // Normalize
+                const normX = (absX - box.x) / box.w;
+                const normY = (absY - box.y) / box.h;
+                const normW = absW / box.w;
+                const normH = absH / box.h;
+
+                // Output final block
+                console.log(`{x: ${normX.toFixed(4)}, y: ${normY.toFixed(4)}, w: ${normW.toFixed(4)}, h: ${normH.toFixed(4)}}`);
+            }
+        }
+
+        function detectDniBox(threshold = 240, step = 4, alphaThreshold = 10) {
+            const width = originalCanvas.width;
+            const height = originalCanvas.height;
+            if (!width || !height) {
+                return { x: 0, y: 0, w: 0, h: 0 };
+            }
+
+            const imageData = originalCtx.getImageData(0, 0, width, height);
+            const data = imageData.data;
+
+            let minX = width, minY = height, maxX = 0, maxY = 0;
+            let found = false;
+
+            for (let y = 0; y < height; y += step) {
+                for (let x = 0; x < width; x += step) {
+                    const idx = (y * width + x) * 4;
+                    const r = data[idx];
+                    const g = data[idx + 1];
+                    const b = data[idx + 2];
+                    const a = data[idx + 3]; // alpha
+
+                    // Ignore fully or almost transparent pixels
+                    if (a < alphaThreshold) continue;
+
+                    const lum = 0.299 * r + 0.587 * g + 0.114 * b;
+
+                    if (lum < threshold) {
+                        found = true;
+                        if (x < minX) minX = x;
+                        if (y < minY) minY = y;
+                        if (x > maxX) maxX = x;
+                        if (y > maxY) maxY = y;
+                    }
+                }
+            }
+
+            // If nothing was found in opaque pixels, return full canvas
+            if (!found) {
+                return { x: 0, y: 0, w: width, h: height };
+            }
+
+            const padding = Math.min(width, height) * 0.01;
+            minX = Math.max(0, minX - padding);
+            minY = Math.max(0, minY - padding);
+            maxX = Math.min(width, maxX + padding);
+            maxY = Math.min(height, maxY + padding);
+
+            return {
+                x: minX,
+                y: minY,
+                w: maxX - minX,
+                h: maxY - minY
+            };
+        }
+
+        function redactZoneInBox(zone, box) {
+            if (!box || box.w === 0 || box.h === 0) return;
+
+            const x = box.x + zone.x * box.w;
+            const y = box.y + zone.y * box.h;
+            const w = zone.w * box.w;
+            const h = zone.h * box.h;
+
+            originalCtx.save();
+            originalCtx.globalCompositeOperation = 'source-over';
+            originalCtx.fillStyle = '#000000';
+            originalCtx.fillRect(x, y, w, h);
+            originalCtx.restore();
+        }
+
+        function applyDniProtection() {
+            if (!originalCanvas.width || !originalCanvas.height) return;
+
+            saveCanvasState();
+
+            // Si el checkbox está marcado, pasamos a B/N
+            const bwCheckbox = document.getElementById('dniApplyBw');
+            if (bwCheckbox && bwCheckbox.checked) {
+                applyBlackAndWhite();
+            }
+
+            const box = detectDniBox();
+
+            if (dniSideFrontRadio.checked) {
+                const hideNumber = document.getElementById('dniHideNumber').checked;
+                const hidePhoto = document.getElementById('dniHidePhoto').checked;
+                const hideLastName = document.getElementById('dniHideLastName').checked;
+                const hideFirstName = document.getElementById('dniHideFirstName').checked;
+                const hideSex = document.getElementById('dniHideSex').checked;
+                const hideNationality = document.getElementById('dniHideNationality').checked;
+                const hideSupport = document.getElementById('dniHideSupport').checked;
+                const hideBirth = document.getElementById('dniHideBirth').checked;
+                const hideIssue = document.getElementById('dniHideIssue').checked;
+                const hideExpiry = document.getElementById('dniHideExpiry').checked;
+                const hideSignature = document.getElementById('dniHideSignature').checked;
+                const hideCAN = document.getElementById('dniHideCAN').checked;
+
+                if (hideNumber) {
+                    redactZoneInBox(dniTemplateFront.number, box);
+                    redactZoneInBox(dniTemplateFront.number_2, box);
+                }
+                if (hidePhoto) {
+                    redactZoneInBox(dniTemplateFront.photo, box);
+                    redactZoneInBox(dniTemplateFront.photo_2, box);
+                }
+                if (hideLastName) redactZoneInBox(dniTemplateFront.lastName, box);
+                if (hideFirstName) redactZoneInBox(dniTemplateFront.firstName, box);
+                if (hideSex) redactZoneInBox(dniTemplateFront.sex, box);
+                if (hideNationality) redactZoneInBox(dniTemplateFront.nationality, box);
+                if (hideBirth) redactZoneInBox(dniTemplateFront.birth, box);
+                if (hideIssue) {
+                    redactZoneInBox(dniTemplateFront.issue, box);
+                    redactZoneInBox(dniTemplateFront.issue_2, box);
+                }
+                if (hideExpiry) redactZoneInBox(dniTemplateFront.expiry, box);
+                if (hideSupport) {
+                    redactZoneInBox(dniTemplateFront.support, box);
+                    redactZoneInBox(dniTemplateFront.support_2, box);
+                }
+                if (hideSignature) redactZoneInBox(dniTemplateFront.signature, box);
+                if (hideCAN) redactZoneInBox(dniTemplateFront.can, box);
+            } else {
+                const hideTeam = document.getElementById('dniHideTeam').checked;
+                const hideAddressBack = document.getElementById('dniHideAddressBack').checked;
+                const hideBirthPlace = document.getElementById('dniHideBirthPlace').checked;
+                const hideParents = document.getElementById('dniHideParents').checked;
+                const hideMRZ = document.getElementById('dniHideMRZ').checked;
+                const hideSupport2 = document.getElementById('dniHideSupport2').checked;
+
+                if (hideTeam) redactZoneInBox(dniTemplateBack.team, box);
+                if (hideAddressBack) redactZoneInBox(dniTemplateBack.address, box);
+                if (hideBirthPlace) redactZoneInBox(dniTemplateBack.birthPlace, box);
+                if (hideParents) redactZoneInBox(dniTemplateBack.parents, box);
+                if (hideMRZ) redactZoneInBox(dniTemplateBack.mrz, box);
+                if (hideSupport2) {
+                    redactZoneInBox(dniTemplateBack.support_3, box);
+                }
+            }
+
+            document.getElementById('undoBlurBtn').disabled = currentStateIndex <= 0;
+        }
+
+        applyDniProtectionBtn.addEventListener('click', () => {
+            applyDniProtection();
+        });
+
+        // ---- Filtros rápidos (presets) ----
+
+        const allDniCheckboxIds = [
+            'dniHideNumber', 'dniHidePhoto', 'dniHideLastName', 'dniHideFirstName',
+            'dniHideSex', 'dniHideNationality', 'dniHideBirth', 'dniHideIssue',
+            'dniHideExpiry', 'dniHideSupport', 'dniHideSupport2', 'dniHideSignature', 'dniHideCAN',
+            'dniHideTeam', 'dniHideAddressBack', 'dniHideBirthPlace',
+            'dniHideParents', 'dniHideMRZ'
+        ];
+
+        function setAllDniCheckboxes(value) {
+            for (const id of allDniCheckboxIds) {
+                const el = document.getElementById(id);
+                if (el) el.checked = value;
+            }
+        }
+
+        function applyDniPreset(preset) {
+            // Estilo visual de los botones
+            for (const btn of dniPresetButtons) {
+                if (btn.dataset.preset === preset) {
+                    btn.classList.add('active');
+                } else {
+                    btn.classList.remove('active');
+                }
+            }
+
+            // Por defecto: desmarcar todas las casillas
+            setAllDniCheckboxes(false);
+
+            // Según preset, marcamos los campos sensibles
+            switch (preset) {
+
+                case 'all':
+                    setAllDniCheckboxes(true);
+                    break;
+
+                case 'none':
+                    setAllDniCheckboxes(false);
+                    break;
+
+                case 'hotel':
+                    setAllDniCheckboxes(true);
+                    // Anverso
+                    document.getElementById('dniHideFirstName').checked = false;
+                    document.getElementById('dniHideLastName').checked = false;
+                    document.getElementById('dniHideNumber').checked = false;
+                    document.getElementById('dniHideSupport').checked = false;
+                    document.getElementById('dniHideSex').checked = false;
+                    document.getElementById('dniHideNationality').checked = false;
+                    document.getElementById('dniHideBirth').checked = false;
+                    // Reverso
+                    document.getElementById('dniHideAddressBack').checked = false;
+                    document.getElementById('dniHideSupport2').checked = false;
+                    break;
+
+                case 'invoice':
+                    setAllDniCheckboxes(true);
+                    // Anverso
+                    document.getElementById('dniHideFirstName').checked = false;
+                    document.getElementById('dniHideLastName').checked = false;
+                    document.getElementById('dniHideNumber').checked = false;
+                    // Reverso
+                    document.getElementById('dniHideAddressBack').checked = false;
+                    break;
+            }
+        }
+
+        function applyBlackAndWhite() {
+            const width = originalCanvas.width;
+            const height = originalCanvas.height;
+            const imgData = originalCtx.getImageData(0, 0, width, height);
+            const data = imgData.data;
+
+            for (let i = 0; i < data.length; i += 4) {
+                const r = data[i];
+                const g = data[i + 1];
+                const b = data[i + 2];
+
+                // Fórmula estándar de luminancia
+                const gray = 0.299 * r + 0.587 * g + 0.114 * b;
+
+                data[i] = gray; // R
+                data[i + 1] = gray; // G
+                data[i + 2] = gray; // B
+                // Alfa lo dejamos igual
+            }
+
+            originalCtx.putImageData(imgData, 0, 0);
+
+            if (typeof saveCanvasState === "function") {
+                saveCanvasState();
+            }
+        }
+
+        for (const btn of dniPresetButtons) {
+            btn.addEventListener('click', () => {
+                applyDniPreset(btn.dataset.preset);
+            });
+        }
+
+        // Navegación
+        nextToWatermarkBtn.addEventListener('click', () => {
+            showStep(step3);
+            applyWatermark();
+        });
+
+        startOverBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            location.reload();
+        });
+
+        // Descarga
+        document.getElementById('downloadBtn').addEventListener('click', () => {
+            const link = document.createElement('a');
+            link.download = 'resultado.png';
+            link.href = canvas.toDataURL('image/png');
+            link.click();
+        });
+
+        /**
+         * Marca de agua
          */
         function applyWatermark() {
-            // Obtener el texto de la marca de agua
             const watermarkText = watermarkInput.value;
 
-            // Ajustar dimensiones del canvas final
             canvas.width = originalCanvas.width;
             canvas.height = originalCanvas.height;
 
-            // Limpiar el canvas y dibujar la imagen procesada
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             ctx.drawImage(originalCanvas, 0, 0);
 
-            // Mantener proporción de aspecto en la visualización
             canvas.style.width = '100%';
             canvas.style.height = 'auto';
             canvas.style.maxWidth = '100%';
 
-            // Convertir la imagen a escala de grises para mejor visibilidad de la marca de agua
             const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
             const data = imageData.data;
             for (let i = 0; i < data.length; i += 4) {
@@ -1762,48 +2360,34 @@ New features: Run only in one file (index.html), blur feature is now a brush.
             }
             ctx.putImageData(imageData, 0, 0);
 
-            // Calcular tamaño de fuente adaptativo
             const minFontSize = 8;
             const maxFontSize = 22;
             const baseFontSize = Math.min(canvas.width, canvas.height) / 40;
             const fontSize = Math.min(maxFontSize, Math.max(minFontSize, baseFontSize));
 
-            // Configurar estilo del texto
             ctx.font = `${fontSize}px Arial`;
             ctx.textAlign = 'center';
 
-            // Calcular espaciado para el patrón de marca de agua
             const textWidth = ctx.measureText(watermarkText).width;
             const horizontalSpacing = textWidth * 1.2;
             const verticalSpacing = fontSize * 1.2;
 
-            // Aplicar transformación para patrón diagonal
             ctx.save();
             ctx.translate(canvas.width / 2, canvas.height / 2);
             ctx.rotate(-Math.PI / 6);
             ctx.translate(-canvas.width / 2, -canvas.height / 2);
 
-            // Calcular área de cobertura para la marca de agua
             const diagonal = Math.hypot(canvas.width, canvas.height);
             const startX = -diagonal / 2;
             const startY = -diagonal / 2;
             const endX = diagonal * 1.5;
             const endY = diagonal * 1.5;
 
-            /**
-             * Función para crear el efecto ondulado en el texto
-             * Añade variación y complejidad a la marca de agua
-             * para dificultar su eliminación
-             * @param {string} text - Texto a dibujar
-             * @param {number} x - Posición X base del texto
-             * @param {number} y - Posición Y base del texto
-             * @param {number} amplitude - Amplitud de la onda
-             * @param {number} frequency - Frecuencia de la onda
-             */
             const drawWavyText = (text, x, y, amplitude, frequency) => {
                 const characters = text.split('');
                 const prevAlign = ctx.textAlign;
-                ctx.textAlign = 'left';  // Alineación izquierda para cálculo preciso de posición
+                ctx.textAlign = 'left';
+
                 let currentX = x - (textWidth / 2);
                 const baselineY = y;
 
@@ -1813,63 +2397,54 @@ New features: Run only in one file (index.html), blur feature is now a brush.
                     const yOffset = amplitude * Math.sin(frequency * waveX + baselineY * 0.05);
                     const xOffset = amplitude * 0.3 * Math.cos(frequency * waveX + baselineY * 0.05);
 
-                    // Capa de sombra para mejorar legibilidad
                     ctx.globalAlpha = 0.1;
                     ctx.fillText(char, currentX + xOffset + 1, baselineY + yOffset + 1);
 
-                    // Capa principal del texto
                     ctx.globalAlpha = 0.35;
                     ctx.fillText(char, currentX + xOffset, baselineY + yOffset);
 
                     currentX += charWidth * 1.1;
                 }
-                ctx.textAlign = prevAlign;
 
+                ctx.textAlign = prevAlign;
             };
 
-            // Paleta de colores para la marca de agua
-            // Colores semi-transparentes para mejor integración visual
             const colors = [
-                'rgba(230, 110, 110, 0.7)',  // Light red
-                'rgba(140, 171, 111, 0.7)',  // Olive green
-                'rgba(230, 110, 110, 0.7)',  // Light red
-                'rgba(140, 171, 111, 0.7)',  // Olive green
-                'rgba(124, 128, 194, 0.7)',  // Grayish blue
-                'rgba(186, 85, 211, 0.7)',   // Purple
-                'rgba(255, 165, 0, 0.7)',    // Orange
-                'rgba(75, 0, 130, 0.7)',     // Indigo
-                'rgba(64, 224, 208, 0.7)',   // Turquoise
-                'rgba(255, 20, 147, 0.7)',   // Deep pink
-                'rgba(255, 215, 0, 0.7)',    // Gold
-                'rgba(0, 128, 128, 0.7)',    // Teal
-                'rgba(219, 112, 147, 0.7)',  // Pale pink
-                'rgba(106, 90, 205, 0.7)',   // Slate blue
-                'rgba(255, 99, 71, 0.7)',    // Tomato
-                'rgba(147, 112, 219, 0.7)',  // Medium purple
-                'rgba(60, 179, 113, 0.7)',   // Medium sea green
-                'rgba(238, 130, 238, 0.7)',  // Violet
-                'rgba(218, 165, 32, 0.7)',   // Dark gold
-                'rgba(72, 209, 204, 0.7)',   // Medium turquoise
-                'rgba(199, 21, 133, 0.7)',   // Medium magenta
-                'rgba(255, 140, 0, 0.7)'     // Dark orange
+                'rgba(230, 110, 110, 0.7)',
+                'rgba(140, 171, 111, 0.7)',
+                'rgba(230, 110, 110, 0.7)',
+                'rgba(140, 171, 111, 0.7)',
+                'rgba(124, 128, 194, 0.7)',
+                'rgba(186, 85, 211, 0.7)',
+                'rgba(255, 165, 0, 0.7)',
+                'rgba(75, 0, 130, 0.7)',
+                'rgba(64, 224, 208, 0.7)',
+                'rgba(255, 20, 147, 0.7)',
+                'rgba(255, 215, 0, 0.7)',
+                'rgba(0, 128, 128, 0.7)',
+                'rgba(219, 112, 147, 0.7)',
+                'rgba(106, 90, 205, 0.7)',
+                'rgba(255, 99, 71, 0.7)',
+                'rgba(147, 112, 219, 0.7)',
+                'rgba(60, 179, 113, 0.7)',
+                'rgba(238, 130, 238, 0.7)',
+                'rgba(218, 165, 32, 0.7)',
+                'rgba(72, 209, 204, 0.7)',
+                'rgba(199, 21, 133, 0.7)',
+                'rgba(255, 140, 0, 0.7)'
             ];
 
-            // Aplicar el patrón de marca de agua en toda la imagen
             for (let y = startY; y < endY; y += verticalSpacing) {
-                // Alternar el offset horizontal en cada fila para crear patrón entrelazado
                 let offsetX = (Math.floor(y / verticalSpacing) % 2) * (horizontalSpacing / 2);
 
                 for (let x = startX + offsetX; x < endX; x += horizontalSpacing) {
-                    // Parámetros de la onda para el texto
                     const amplitude = fontSize * 0.8;
                     const frequency = 0.04;
-                    // Seleccionar color aleatorio para cada instancia del texto
                     ctx.fillStyle = colors[Math.floor(Math.random() * colors.length)];
                     drawWavyText(watermarkText, x, y, amplitude, frequency);
                 }
             }
 
-            // Restaurar el contexto del canvas y la opacidad
             ctx.restore();
             ctx.globalAlpha = 1;
         }
